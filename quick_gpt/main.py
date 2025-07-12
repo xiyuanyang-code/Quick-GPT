@@ -42,6 +42,7 @@ def main():
             terminal_state = True
         elif input_message == "@history":
             Chat.show_history()
+            continue
         elif input_message[0] == "@":
             print(Fore.YELLOW + "WARNING, invalid magical command" + Style.RESET_ALL)
 

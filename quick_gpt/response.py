@@ -12,7 +12,23 @@ from typing import List, Dict
 
 
 def integrate_message(original_content: str, history: List[Dict[str, str]]):
-    pass
+    """
+    Integrate conversation history and the current user input into a single string for model input.
+
+    Args:
+        original_content (str): The current user input.
+        history (List[Dict[str, str]]): The conversation history, each item is a dict with 'role' and 'content'.
+
+    Returns:
+        str: The integrated message string.
+    """
+    lines = []
+    for msg in history:
+        # Format: [role]: content
+        lines.append(f"{msg['role']}: {msg['content']}")
+    # Add the current user input as the last line
+    lines.append(f"user: {original_content}")
+    return "\n".join(lines)
 
 
 def _response_google_sdk(
@@ -70,9 +86,6 @@ def _response_openai_sdk(
         base_url (str): The base URL for the OpenAI API endpoint.
         model_name (str): The name of the OpenAI model to use.
         system_prompt (str, optional): The system prompt to guide the model's behavior.
-
-    Returns:
-        None. Prints the response or error messages to the console.
     """
     headers = {
         "Content-Type": "application/json",
@@ -93,7 +106,7 @@ def _response_openai_sdk(
         response = requests.post(base_url, headers=headers, data=json.dumps(payload))
         response.raise_for_status()
         data = response.json()
-        print(json.dumps(data, indent=2, ensure_ascii=False))
+        return data
 
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")

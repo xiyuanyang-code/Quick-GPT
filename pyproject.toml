@@ -1,0 +1,14 @@
+[project]
+name = "quick-gpt"
+version = "0.1.0"
+description = "A CLI tool for multi-turn conversations with OpenAI and Google Gemini models."
+authors = [{ name = "Xiyuan Yang", email = "yangxiyuan@sjtu.edu.cn" }]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = ["requests", "colorama", "python-dotenv", "google-generativeai"]
+
+[project.scripts]
+quick-gpt = "quick_gpt.main:main"
+
+[tool.setuptools]
+packages = ["quick_gpt"]
