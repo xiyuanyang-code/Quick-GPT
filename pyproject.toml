@@ -1,6 +1,6 @@
 [project]
 name = "quick-gpt"
-version = "0.1.0"
+version = "0.1.1"
 description = "A CLI tool for multi-turn conversations with OpenAI and Google Gemini models."
 authors = [{ name = "Xiyuan Yang", email = "yangxiyuan@sjtu.edu.cn" }]
 readme = "README.md"

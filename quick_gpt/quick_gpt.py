@@ -163,7 +163,9 @@ class quick_GPT:
         Returns:
             list: The initial conversation history.
         """
-        history_dir = os.path.join(os.getcwd(), "history")
+        # !fix: stop using os.getcwd() for generating rubbish everywhere!
+        home_dir = os.path.expanduser("~") 
+        history_dir = os.path.join(home_dir, ".quick_gpt_dir")
         os.makedirs(history_dir, exist_ok=True)
 
         self.file_path = os.path.join(history_dir, self.id)
@@ -176,8 +178,3 @@ class quick_GPT:
 
         return load_history(self.file_path)
 
-
-if __name__ == "__main__":
-    test_list = ["gpt-4o-mini", "o3", "gfhjdn", "gemini-flash"]
-    for test_name in test_list:
-        test = quick_GPT("1", "hellpo", model_name=test_name)
