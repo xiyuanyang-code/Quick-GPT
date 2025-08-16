@@ -1,14 +1,31 @@
 [project]
 name = "quick-gpt"
-version = "0.1.1"
-description = "A CLI tool for multi-turn conversations with OpenAI and Google Gemini models."
+version = "1.1.1"
+description = "A CLI tool for multi-turn conversations with MCP tools enhancement."
 authors = [{ name = "Xiyuan Yang", email = "yangxiyuan@sjtu.edu.cn" }]
 readme = "README.md"
-requires-python = ">=3.8"
-dependencies = ["requests", "colorama", "python-dotenv", "google-generativeai"]
+requires-python = ">=3.10"
+dependencies = [
+    "anthropic>=0.64.0",
+    "colorlog>=6.9.0",
+    "ddgs>=9.5.2",
+    "duckduckgo-search>=8.1.1",
+    "httpx>=0.28.1",
+    "mcp>=1.13.0",
+    "nest-asyncio>=1.6.0",
+    "prompt-toolkit>=3.0.51",
+    "pyyaml>=6.0.2",
+    "rich>=14.1.0",
+    "zhipuai>=2.1.5.20250801",
+]
 
 [project.scripts]
 quick-gpt = "quick_gpt.main:main"
 
 [tool.setuptools]
 packages = ["quick_gpt"]
+include-package-data = true
+
+[[tool.uv.index]]
+url = "https://mirrors.aliyun.com/pypi/simple"
+default = true
